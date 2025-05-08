@@ -1,0 +1,22 @@
+== Running the pre-upgrade assistant and resolving issues
+
+Built into the leapp tool is a utility that collects data about the
+system, assesses upgradability, and generates a pre-upgrade report. On
+your lab system, perform the pre-upgrade test: (This process will take a
+couple minutes.)
+
+[source,bash,run]
+----
+leapp preupgrade --target 8.10
+----
+
+Notice how the upgrade was "`inhibited`" because the preupgrade
+assistant requires your input on one or more issues before it will
+safely proceed. The preupgrade tool has generated an answerfile in
+`+/var/log/leapp+`. Inside of this file, it has generated a true/false
+question regarding PAM PKCS11 modules:
+
+[source,bash,run]
+----
+cat /var/log/leapp/answerfile
+----
